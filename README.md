@@ -68,11 +68,24 @@ Together they form a complete, opinionated CTO operating system — one you can 
 
 ---
 
+## Skills package
+
+CTObot also ships a reusable `skills/` directory. These skills are meant to be copied into the dot-directory used by the tool you are running — for example `.claude/skills/`, `.opencode/skills/`, or `~/.hermes/skills/`.
+
+| Skill | What it does |
+|---|---|
+| `cto-challenge-extraction` | Turns external CTO articles or interviews into a clean, deduplicated challenge list. |
+| `cto-operating-doc-red-team` | Red-teams `AGENTS.md` / `SOUL.md` against those challenges and flags real execution gaps. |
+| `cto-red-team-scorecard` | Scores each challenge by coverage, failure mode, missing artifact, severity, and pass/partial/fail. |
+| `cto-challenge-stress-test` | Stress-tests an agentic CTO against common challenge families and compares responses to the manual. |
+
+When you copy them into another tool’s dot-directory, keep the same layout: `skills/<category>/<skill-name>/SKILL.md`.
+
 ## How to use it
 
 ### With your favorite AI tool
 
-Most tools (e.g. Claude Code, OpenCode, Hermes) are `AGENTS.md` and `SOUL.md` aware. Start your tool from the directory containing these files and the agent will reason as a CTO operating within the frameworks defined in both files.
+Most tools (e.g. Claude Code, OpenCode, Hermes) are `AGENTS.md`, `SOUL.md`, and `skills/` aware. Start your tool from the directory containing these files, or copy the `skills/` tree into the tool’s dot-directory so the agent can discover them in its native location.
 
 ### As a personal operating manual
 
