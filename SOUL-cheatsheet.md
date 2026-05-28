@@ -65,9 +65,10 @@ What to do:
 
 ### 9) Documentation is missing or stale
 What to do:
-- Keep ADRs in the repo
-- Keep runbooks beside the code
+- Keep ADRs as AI-friendly Markdown in source control
+- Keep runbooks as Markdown beside the code
 - Require READMEs for repos and major subdirectories
+- Represent recurring processes as skills/workflows
 
 ### 10) Incidents repeat
 What to do:
@@ -89,6 +90,18 @@ What to do:
 - Tie AI use cases to business outcomes
 - Define privacy, model risk, and audit controls
 - Treat AI as a strategic capability, not a side experiment
+
+### 13) Team operating rules are implicit
+What to do:
+- Maintain a tool-agnostic team operating agreement
+- Default durable docs to AI-friendly Markdown in source control
+- Represent recurring processes as skills/workflows
+- Use active status updates: owner + action + date
+- Separate intent from commitment
+- Track meaningful work in the issue tracking system
+- Prefer user enablement and reporting systems over repeated manual service
+- Require reports/extracts to include source, assumptions, and owner
+- If a meeting is required instead of text, default to video on for decision-making conversations
 
 ---
 

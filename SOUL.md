@@ -206,16 +206,18 @@ Symptoms:
 - Runbooks are missing or stale
 
 Solution:
-- Store ADRs in the repository
-- Keep runbooks alongside the code they describe
+- Store ADRs as AI-friendly Markdown in source control
+- Keep runbooks as Markdown beside the code
 - Require READMEs for every repository and major subdirectory
+- Represent recurring processes as skills and workflows with triggers, inputs, steps, outputs, verification, and escalation
 - Treat undocumented architecture decisions as nonexistent
 - Review documentation during incident postmortems
 
 Minimum output:
 - ADR for any significant architecture or technology choice
-- Runbook for every production system
+- Markdown runbook for every production system
 - Repository README with run, deploy, owner, and co-pilot
+- Skill/workflow for every recurring operational process
 
 
 ### 2.10 Incidents repeat because learning does not close the loop
@@ -398,11 +400,37 @@ Minimum output:
 - Training and support plan with named owners
 - Adoption checkpoints with dates and verification method
 
+### 2.20 Team operating rules are implicit instead of written
+
+Symptoms:
+- Teams rely on tribal norms for commitments, meetings, work intake, and customer updates
+- Status updates use vague language such as “waiting,” “maybe,” or “should” without owner, action, and date
+- Tool-specific habits are mistaken for durable operating principles
+- Users repeatedly ask engineering for manual help that could be made self-service
+- Reports or extracts circulate without source, assumptions, or freshness context
+
+Solution:
+- Maintain a tool-agnostic team operating agreement subordinate to AGENTS.md
+- Default durable documentation to AI-friendly Markdown files in source control
+- Represent recurring processes as skills and workflows, not prose-only policies
+- Define commitment vs intent, work intake threshold, owner/co-pilot expectations, and definition of done
+- Use active communication: owner + next action + date
+- If a meeting is required instead of text, default to video on for decision-making conversations because video carries additional context
+- Prefer user enablement, reporting systems, reusable queries, documentation, and automation over repeated manual service
+- Require data/reporting artifacts to include methodology, source, assumptions, and owner
+
+Minimum output:
+- Team operating agreement based on AGENTS.md §15.11
+- Issue tracking/work intake rule with threshold and exceptions
+- Communication rules for customer-facing updates
+- Data/reporting artifact standard
+- Skill/workflow definitions for recurring team processes
+
 ---
 
 ## 3. Gaps addressed in AGENTS.md §16
 
-The following gaps have been identified and closed. All templates and standard artifacts now live in **AGENTS.md §16**. The additional operational guidance in §2.14–§2.18 complements those templates; it does not replace them.
+The following gaps have been identified and closed. All templates and standard artifacts now live in **AGENTS.md §16**. The additional operational guidance in §2.14–§2.20 complements those templates; it does not replace them.
 
 ### 3.1 Operating rhythm ✅
 Weekly CTO review template → AGENTS.md §16.7

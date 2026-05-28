@@ -633,6 +633,8 @@ If a dataset fails any of these tests, it is a §4 debt item. If it fails multip
 
 **Relational-first by default.** All persistent application data should end up in a relational database unless a written exception has been granted by the CTO. The relational model is not a preference — it is the default because it is queryable, human-readable, enforces integrity constraints, and is understood by both engineers and AI agents.
 
+**Data and reporting artifacts must carry their method.** When engineering delivers a report, analysis, extract, spreadsheet, or dashboard to a user, the artifact must make its source and assumptions clear: source data, query or transformation logic, date range, filters, freshness timestamp, and owner. Prefer governed reports or reusable queries in the reporting system over private spreadsheets or unexplained extracts. The expected output is an answer to the business question, not a raw data dump.
+
 **Non-relational data stores** (document databases, key-value stores, object storage, flat files) may be used as intermediate or operational layers — caches, queues, event buses, blob storage — but must not become the system of record without a CTO-approved ADR. When they are used, the same accessibility and readability standards apply to whatever interface is exposed to consumers.
 
 **Opaque formats as system of record are prohibited.** Any format that requires specialist tooling, proprietary software, or undocumented structural knowledge to read is not acceptable as a system of record for business data. If such a system is inherited, it is automatically classified as Reckless-tier debt and subject to §4.3 remediation.
@@ -656,10 +658,12 @@ A shared vocabulary is load-bearing infrastructure. Misaligned definitions cause
 | **Yes** | I have understood the request and I am agreeing to it. A "yes" without a timeline is not a commitment. |
 | **Possible** | I believe this can be done, but I have not committed to doing it. Further scoping is needed. |
 | **Commitment** | A promise with a date attached. Once accepted, the owner is responsible for its completion or for proactively communicating changes (see §15.8). |
+| **Intent** | A statement of likely future action without a delivery promise. Intent must not be phrased as a commitment. |
 | **Due Date** | The date by which a commitment will be fully delivered, confirmed, and verifiable by the requestor. Not the date work starts. Not the date a PR (Pull Request) is opened. |
 | **Done** | The work meets the agreed definition of done: tested, reviewed, deployed to the agreed environment, and verified by the owner. "Done" is never "done on my machine." |
 | **Blocker** | Something that will prevent a commitment from being met if not resolved. Blockers must be raised immediately — not at the next standup. |
 | **Risk** | Something that *may* prevent a commitment from being met. Risks must be communicated when identified, not when they materialise. |
+| **System of record** | The authoritative tracked place for work, decisions, commitments, status, and follow-up. The concrete tool may vary by organisation. |
 
 **Governance:** Any team member may propose an addition or amendment to the glossary via a pull request. The CTO approves changes. The glossary is reviewed annually or whenever a recurring miscommunication is traced back to an undefined term.
 
@@ -674,7 +678,9 @@ A commitment is a contract between two people. This culture has one governing ru
 Operationally, this means:
 
 - **Accepting a commitment** means you have understood the scope, believe it is achievable in the timeframe, and accept personal accountability for its outcome.
+- **Intent is not commitment.** If the work is not committed, say so directly: "I will add this for prioritisation" or "I will bring a yes/no/not-yet recommendation by Friday." Do not imply a delivery promise where none exists.
 - **If a risk emerges**, notify the requestor as soon as the risk is identified — not at the deadline, not at standup, immediately.
+- **Use active ownership language.** Replace vague updates such as "waiting", "maybe", "should be done", or "being looked at" with owner + action + date: "I will follow up with [person/team] and send an update by [date/time]."
 - **"I forgot"** is not an acceptable explanation for a missed commitment. It is a process failure that must be addressed with a personal system (calendar, task tracker, whatever works).
 - **Partial completion is not delivery.** If 80% is done by the due date, the commitment is not met. Communicate this before the deadline with a revised date.
 - **Managers are accountable for their team's commitments.** If a team member misses a commitment without proactive communication, the Engineering Manager shares accountability.
@@ -685,14 +691,17 @@ The CTO models this behaviour without exception. If the CTO misses a commitment,
 
 ### 15.9 Documentation as Code
 
-Documentation that lives outside the repository will drift, rot, and eventually mislead. The rule:
+Documentation that lives outside the repository will drift, rot, and eventually mislead. The default documentation format is **AI-friendly Markdown in source control**: plain text, linkable, searchable, diffable, reviewable, and readable by humans and AI agents without proprietary tooling.
 
-- **Architecture Decision Records (ADRs)** are stored in `docs/adr/` in the relevant repository. Every significant architecture or technology choice gets one. Format: context, decision, consequences, status (`proposed` / `accepted` / `superseded`).
-- **Runbooks** live in `docs/runbooks/` alongside the code they describe. A runbook that is not in the repository does not exist for operational purposes.
+The rule:
+
+- **Architecture Decision Records (ADRs)** are stored as Markdown in `docs/adr/` in the relevant repository. Every significant architecture or technology choice gets one. Format: context, decision, consequences, status (`proposed` / `accepted` / `superseded`).
+- **Runbooks** live as Markdown in `docs/runbooks/` alongside the code they describe. A runbook that is not in the repository does not exist for operational purposes.
 - **READMEs** are mandatory for every repository and every major subdirectory. They answer: what does this do, how do I run it locally, how do I deploy it, who owns it, and who is the co-pilot.
-- **Confluence, Notion, and wikis** are permitted for high-level strategy, meeting notes, and non-technical content. They are explicitly prohibited as the home for technical documentation that engineers need to operate systems.
+- **Processes are represented as skills and workflows.** A recurring process should be captured as an executable operating artifact: trigger, inputs, steps, decision points, outputs, owner, verification checklist, and escalation path. If a process requires judgment or repetition, prefer a skill/workflow over a prose-only policy.
+- **Shared document systems and wikis** are permitted for high-level strategy, meeting notes, and non-technical content. They are explicitly not the default home for technical documentation, runbooks, operating procedures, or recurring workflows that engineers or AI agents need to execute.
 
-**Review trigger:** As part of any incident post-mortem, ask "was the correct runbook available and current?" If no, updating the documentation is a required action item, not optional.
+**Review trigger:** As part of any incident post-mortem, ask "was the correct Markdown runbook, skill, or workflow available and current?" If no, updating the documentation/process artifact is a required action item, not optional.
 
 ---
 
@@ -722,6 +731,33 @@ A post-mortem with action items but no closed loop is a post-mortem that will pr
 3. Conduct a second-order post-mortem: *why did our learning loop fail?* The output must address the systemic gap in how action items are owned, tested, and verified.
 
 **CTO's role in incidents:** During a P1, the CTO's job is to remove blockers and ensure communication — not to drive the technical resolution. Trust the engineers closest to the system.
+
+---
+
+### 15.11 Team Operating Agreements
+
+AGENTS.md defines company-wide principles. Each team may maintain a team operating agreement that translates those principles into local day-to-day behaviour. Team agreements are subordinate to this manual: they can add workflow detail, but they cannot weaken ownership, commitment, documentation, data, security, or escalation standards.
+
+Team operating agreements should be tool-agnostic at the principle level. They may name local tools in onboarding notes, but the durable rules should use generic concepts such as issue tracking system, reporting system, source control, shared document system, and system of record.
+
+Documentation defaults to AI-friendly Markdown files in source control. Shared document systems may mirror or discuss process content, but they should not be the canonical home for technical documentation, runbooks, operating procedures, or workflows that humans and AI agents need to execute.
+
+Recurring processes should be represented as skills and workflows, not only as narrative documents. A useful skill/workflow states: when to use it, inputs, ordered steps, decision points, outputs, owner, verification checklist, and escalation path.
+
+Every team operating agreement should cover:
+- purpose and scope;
+- commitment protocol, including intent vs commitment;
+- work intake and tracking threshold;
+- ownership and co-pilot expectations;
+- communication norms, including active owner/action/date wording;
+- when a meeting is required instead of written communication, with video on by default for decision-making conversations;
+- development and delivery principles;
+- user enablement over repeated manual service;
+- data and reporting artifact standards;
+- definition of done;
+- exception and escalation rules.
+
+**Default template:** `docs/team-sops/engineering-team-operating-agreement.md`.
 
 ---
 
