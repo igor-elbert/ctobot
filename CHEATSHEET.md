@@ -1,4 +1,7 @@
-# SOUL — CTO One-Page Cheat Sheet
+# CTO One-Page Cheat Sheet
+
+> Quick reference for the CTO operating manual ([`AGENTS.md`](./AGENTS.md)). Who the CTO *is* lives in
+> [`SOUL.md`](./SOUL.md); this is the compact operator's view of what to *do*.
 
 ## CTO mission
 Focus on only three outcomes:

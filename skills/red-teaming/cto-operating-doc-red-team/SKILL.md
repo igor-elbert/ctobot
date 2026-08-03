@@ -1,7 +1,7 @@
 ---
 name: cto-operating-doc-red-team
-description: Use when red-teaming AGENTS.md, SOUL.md, or similar CTO operating docs against external leadership challenges. Produces a practical pass/partial/fail audit focused on execution gaps, missing artifacts, and adoption risk.
-version: 1.0.0
+description: Use when red-teaming a CTO operating manual (AGENTS.md, with its CHEATSHEET.md quick reference and SOUL.md persona) against external leadership challenges. Produces a practical pass/partial/fail audit focused on execution gaps, missing artifacts, and adoption risk.
+version: 1.1.0
 author: Hermes Agent
 license: MIT
 metadata:
@@ -16,7 +16,7 @@ metadata:
 
 The goal is to detect where a document sounds correct but would still fail in practice.
 
-This skill is specifically for AGENTS.md / SOUL.md style docs. It checks whether the docs provide enough machinery to survive the messy parts of CTO work:
+This skill is specifically for a CTO operating manual (AGENTS.md and its CHEATSHEET.md quick reference; the SOUL.md persona carries voice and boundaries, not operating machinery). It checks whether the docs provide enough machinery to survive the messy parts of CTO work:
 - onboarding into inherited mess
 - stakeholder politics
 - change rollout
@@ -51,7 +51,7 @@ When the user supplied or requested a source-backed comparison, cite the source 
 ## When to Use
 
 Use when:
-- the user wants to stress-test AGENTS.md / SOUL.md against external challenge lists
+- the user wants to stress-test the CTO operating manual (AGENTS.md / CHEATSHEET.md) against external challenge lists
 - you need to identify practical gaps in the operating manual
 - the user wants a CTO red-team review focused on execution, not philosophy
 - you are comparing the docs to a source like a new-CTO article, interview, or playbook
@@ -66,7 +66,7 @@ Do not use for:
 For each challenge, answer four questions:
 
 1. Coverage
-   - Does AGENTS.md / SOUL.md explicitly address the issue?
+   - Does AGENTS.md (or its CHEATSHEET.md) explicitly address the issue?
 
 2. Executability
    - Does the doc give the CTO a real way to act, or only a principle?
@@ -108,8 +108,8 @@ Then add:
 1. Reviewing the manual as a philosophy document.
    - This skill is about operability.
 
-2. Forgetting AGENTS.md and SOUL.md together.
-   - Use both, with AGENTS.md as the source of truth and SOUL.md as the practical companion.
+2. Confusing the persona with the operating manual.
+   - AGENTS.md is the operating source of truth and CHEATSHEET.md its quick reference; SOUL.md is the persona (identity, boundaries, voice), not operating machinery. Red-team operability against AGENTS.md, not SOUL.md.
 
 3. Rating by intent instead of execution.
    - If the rollout path is missing, the challenge is still only a partial pass.
@@ -122,7 +122,7 @@ Then add:
 
 ## Verification Checklist
 
-- [ ] AGENTS.md and SOUL.md reviewed together
+- [ ] AGENTS.md and CHEATSHEET.md reviewed together for operability (SOUL.md persona checked for voice/boundaries)
 - [ ] External challenges normalized into plain-English problems
 - [ ] Each challenge scored for coverage and executability
 - [ ] Failure mode and missing artifact identified

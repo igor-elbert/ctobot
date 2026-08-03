@@ -10,6 +10,7 @@ This directory contains the reusable CTO-focused skills that ship with CTObot.
 | `cto-operating-doc-red-team` | Compare `AGENTS.md` / `SOUL.md` against those challenges and surface practical execution gaps. |
 | `cto-red-team-scorecard` | Produce a pass / partial pass / fail scorecard with missing artifacts and severity. |
 | `cto-challenge-stress-test` | Evaluate an agentic CTO against common CTO challenge families and compare to the governing manual. |
+| `proprietary-leak-scan` | Scan the public files for company-specific content that has leaked in (org name, emails, NPI/PII, secrets). Run before every commit. |
 
 ## How to install
 

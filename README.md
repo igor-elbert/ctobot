@@ -11,7 +11,7 @@ CTObot is a pair of structured markdown files that give an AI agent — or a hum
 | File | Purpose |
 |---|---|
 | [`AGENTS.md`](./AGENTS.md) | The full operating manual: responsibilities, decision frameworks, thresholds, cadences, escalation rules, culture principles, and standard artifact templates |
-| [`SOUL.md`](./SOUL.md) | The practical companion: a map of the 19 most common CTO problems and the exact framework and minimum output for each one |
+| [`SOUL.md`](./SOUL.md) | The CTO persona: identity, core truths, boundaries, and voice (soul.md/OpenClaw schema). The recurring-problem quick reference lives in [`CHEATSHEET.md`](./CHEATSHEET.md) |
 
 Together they form a complete, opinionated CTO operating system — one you can load into an AI agent, hand to a new technical leader, or use as a personal reference.
 
@@ -78,6 +78,7 @@ CTObot also ships a reusable `skills/` directory. These skills are meant to be c
 | `cto-operating-doc-red-team` | Red-teams `AGENTS.md` / `SOUL.md` against those challenges and flags real execution gaps. |
 | `cto-red-team-scorecard` | Scores each challenge by coverage, failure mode, missing artifact, severity, and pass/partial/fail. |
 | `cto-challenge-stress-test` | Stress-tests an agentic CTO against common challenge families and compares responses to the manual. |
+| `proprietary-leak-scan` | Pre-commit safety gate: flags company-specific content (org name, emails, NPI/PII, secrets) that has slipped into the public files. |
 
 When you copy them into another tool’s dot-directory, keep the same layout: `skills/<category>/<skill-name>/SKILL.md`.
 
@@ -89,7 +90,7 @@ Most tools (e.g. Claude Code, OpenCode, Hermes) are `AGENTS.md`, `SOUL.md`, and 
 
 ### As a personal operating manual
 
-Work through the [First 90 Days Checklist](./AGENTS.md#169-first-30--60--90-day-operating-checklist) on arrival. Use the templates in `AGENTS.md §16` as your standard artifacts. Use `SOUL.md §2` to diagnose recurring problems.
+Work through the [First 90 Days Checklist](./AGENTS.md#169-first-30--60--90-day-operating-checklist) on arrival. Use the templates in `AGENTS.md §16` as your standard artifacts. Use [`CHEATSHEET.md`](./CHEATSHEET.md) to diagnose recurring problems and map each to the right `AGENTS.md` section.
 
 ### As a team reference
 
@@ -118,7 +119,7 @@ This is a living document. Contributions that improve accuracy, fill gaps, or re
 **Contribution standards:**
 
 - Changes to `AGENTS.md` must cite a source or describe a concrete operational rationale
-- Changes to `SOUL.md` must map to a real recurring problem and include a minimum output
+- Changes to `SOUL.md` must keep it a lean persona (identity, core truths, boundaries, voice); operating detail belongs in `AGENTS.md`
 - Suggested skills must be correctly formatted with `SKILL.md` and the explanation
 - Do not add frameworks that cannot be verified or acted on by a working CTO
 

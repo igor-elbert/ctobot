@@ -1,0 +1,40 @@
+# =============================================================================
+# Company-specific / proprietary information — NEVER upload to public GitHub
+# =============================================================================
+# This repo (CTObot) is public and MIT-licensed. Anything that is specific to
+# our company, customers, employees, or infrastructure belongs in the ignored
+# folder below — not in AGENTS.md, SOUL.md, docs/, or skills/.
+# Ignore everything inside company_proprietary/ EXCEPT its generic README
+# (which documents the public/private convention and names nothing company-specific).
+company_proprietary/*
+!company_proprietary/README.md
+
+# Belt-and-suspenders: also block common names people reach for by mistake.
+company-proprietary/
+company_private/
+proprietary/
+private/
+internal/
+*.private.md
+
+# Secrets and credentials — never commit these to any repo, public or private.
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+secrets.*
+*secret*.json
+*.tfstate
+*.tfstate.*
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local, machine-specific tool settings (not for the public repo)
+.claude/settings.local.json
+**/settings.local.json
